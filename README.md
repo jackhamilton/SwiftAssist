@@ -1,9 +1,9 @@
 Provides helper functions on the mac user path for a few bulky Swift tasks. Also contains some templates and snippets.
 
-Installation:
+# Installation:
 sh install.sh
 
-Usage:
+# Usage:
 
 sass -c   OR   sass --clean
 Removes Podfile.lock, Gemfile.lock, Pods/, and wipes DerivedData.
