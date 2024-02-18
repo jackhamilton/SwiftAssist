@@ -1,5 +1,3 @@
-Provides helper functions on the mac user path for a few bulky Swift tasks. Also contains some templates and snippets.
-
 # Installation:
 
 > sh install.sh
