@@ -1,0 +1,90 @@
+#!/bin/bash
+# Help
+help()
+{
+    echo "Swift Assist tool version 1.0"
+    echo "Maintained by Jack Hamilton"
+    echo
+    echo "Syntax: sass -[h|c|r]|--[help|clean|reset_simulators]"
+    echo
+    echo "-h, --help: Displays the current help description."
+    echo
+    echo "-c, --clean: Cleans an xcode project in the current directory."
+    echo "Wipes derived data, clears gemfile.lock & podfile.lock, cleans"
+    echo "pods and cocoapods artifacts. "
+    echo
+    echo "-r, --reset_simulators: Erases all active simulators."
+    echo
+}
+
+clean()
+{
+    pod cache clean --all
+    rm -rf ../Pods/
+    rm -rf ../Podfile.lock
+    rm -rf "${HOME}/Library/Caches/CocoaPods"
+    while [ -d ~/Library/Developer/Xcode/DerivedData ]
+    do
+        rm -rf ~/Library/Developer/Xcode/DerivedData
+        if [ -d ~/Library/Developer/Xcode/DerivedData ]; then
+            printf "Could not acquire lock on derived data. Retrying."
+            for i in {1..5}
+            do
+                sleep 1
+                printf "."
+            done
+            printf "\n"
+        fi
+    done
+    pod install --repo-update
+    echo "Clean complete."
+}
+
+reset_simulators()
+{
+    xcrun simctl shutdown all
+    killall "Simulator" 2> /dev/null
+    xcrun simctl erase all
+    echo "Simulators reset."
+}
+
+has_argument() {
+    [[ ("$1" == *=* && -n ${1#*=}) || ( ! -z "$2" && "$2" != -*) ]];
+}
+
+extract_argument() {
+    echo "${2:-${1#*=}}"
+}
+
+handle_options() {
+    while [ $# -gt 0 ]; do
+        case $1 in
+            -h | --help)
+                help
+                exit 0
+                ;;
+            -c | --clean)
+                clean
+                exit 0
+                ;;
+            -r | --reset_simulators)
+                reset_simulators
+                exit 0
+                ;;
+            #-o | --option*)  if ! has_argument $@; then     fi
+            *)
+                echo "Invalid option: $1" >&2
+                echo
+                help
+                exit 1
+                ;;
+        esac
+        shift
+    done
+}
+
+handle_options "$@"
+if [ "$#" -ne 1 ]; then
+	help
+	exit 0
+fi
