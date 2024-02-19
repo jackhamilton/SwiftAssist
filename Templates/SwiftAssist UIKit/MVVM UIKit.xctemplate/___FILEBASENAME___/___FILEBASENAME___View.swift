@@ -9,8 +9,8 @@
 import UIKit
 
 class ___VARIABLE_productName:identifier___View: UIView {
-	init() {
-        super.init()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
 
     required init?(coder aDecoder: NSCoder) {
