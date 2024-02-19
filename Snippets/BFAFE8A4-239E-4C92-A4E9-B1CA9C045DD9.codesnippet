@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>codable</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>struct &lt;#Name#&gt;: Codable, Identifiable {
+    var id = UUID()
+    var &lt;#Property#&gt;: &lt;#Type#&gt;?
+    
+    enum CodingKeys: String, CodingKey {
+        case &lt;#Variable name#&gt; = &lt;#JSON Key#&gt;
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>BFAFE8A4-239E-4C92-A4E9-B1CA9C045DD9</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Codable struct with CodingKeys</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Codable</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

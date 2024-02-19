@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>encodable</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>extension &lt;#Name#&gt;: Encodable {
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(&lt;#Property#&gt;, forKey: .&lt;#Key#&gt;)
+        
+        var nestedContainer = container.nestedContainer(keyedBy:&lt;#Struct#&gt;.self, forKey: .&lt;#Key#&gt;)
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>599AC52E-7896-410E-9238-F4D0F3416061</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Custom encodable implementation with container</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Encodable</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

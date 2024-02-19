@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>dataloader</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>class DataLoaderService: ObservableObject {
+    @Published var data: Data = Data()
+    
+    init(urlString: String) {
+        if let url = URL(string: urlString) {
+            let urlRequest = URLRequest(url: url)
+            let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
+                guard let data = data else {
+                    return
+                }
+                DispatchQueue.main.async { [weak self] in
+                    self?.data = data
+                }
+            }
+            task.resume()
+        }
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>7CC44173-530A-4C12-9501-7F275E628B7F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Combine - Data Loader Service</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

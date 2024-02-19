@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>urldata</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>if let url = URL(string: &lt;#URL String#&gt;) {
+            let urlRequest = URLRequest(url: url)
+            let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
+                guard let data = data else {
+                    return
+                }
+                &lt;#Data Handler / Dispatch to Main#&gt;
+            }
+            task.resume()
+        }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>25CC3F6A-3F92-4B75-8D44-4DB49CDEA840</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Fetch Data from URL</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

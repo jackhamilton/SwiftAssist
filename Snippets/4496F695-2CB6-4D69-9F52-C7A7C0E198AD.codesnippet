@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>complexlist</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>@State private var singleSelection: UUID?
+    
+    var body: some View {
+        NavigationView {
+            List(selection: $singleSelection) {
+                ForEach(&lt;#Section Array#&gt;) { section in
+                    Section(header: Text("&lt;#Text#&gt;")) {
+                        ForEach(section.&lt;#Item#&gt;) { item in
+                            &lt;#Row#&gt;
+                        }
+                    }
+                }
+            }
+            .refreshable {
+                &lt;#OnRefresh#&gt;
+            }
+            .navigationTitle("&lt;#Title#&gt;")
+        }
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>4496F695-2CB6-4D69-9F52-C7A7C0E198AD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>SwiftUI Complex List</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
