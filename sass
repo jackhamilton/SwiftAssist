@@ -19,7 +19,14 @@ help()
 
 clean()
 {
-    pod cache clean --all
+    local gitRoot=$(git rev-parse --show-toplevel)
+    cd "$gitRoot"
+    local hasBundler=$(has_bundler)
+    if [ "$hasBundler" = "1" ]; then
+        bundle exec pod cache clean --all
+    else
+        pod cache clean --all
+    fi
     rm -rf ../Pods/
     rm -rf ../Podfile.lock
     rm -rf "${HOME}/Library/Caches/CocoaPods"
@@ -36,7 +43,19 @@ clean()
             printf "\n"
         fi
     done
-    pod install --repo-update
+
+    SETUP_SCRIPT=scripts/install_dependencies.sh
+    if test -f "$SETUP_SCRIPT"; then
+        echo "Executing dependency setup script."
+        sh "$SETUP_SCRIPT"
+    else
+        echo "No setup script found. Executing pod install."
+        if [ "$hasBundler" = "1" ]; then
+            bundle exec pod install --repo-update
+        else
+            pod install --repo-update
+        fi
+    fi
     echo "Clean complete."
 }
 
@@ -46,6 +65,15 @@ reset_simulators()
     killall "Simulator" 2> /dev/null
     xcrun simctl erase all
     echo "Simulators reset."
+}
+
+has_bundler()
+{
+    if gem list --local | grep -q 'bundler'; then
+        echo 1
+    else
+        echo 0
+    fi
 }
 
 has_argument() {
