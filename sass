@@ -27,6 +27,9 @@ clean()
     else
         pod cache clean --all
     fi
+    swift package purge-cache
+    swift package reset
+    swift package clean
     rm -rf ../Pods/
     rm -rf ../Podfile.lock
     rm -rf "${HOME}/Library/Caches/CocoaPods"
@@ -48,14 +51,14 @@ clean()
     if test -f "$SETUP_SCRIPT"; then
         echo "Executing dependency setup script."
         sh "$SETUP_SCRIPT"
-    else
-        echo "No setup script found. Executing pod install."
-        if [ "$hasBundler" = "1" ]; then
-            bundle exec pod install --repo-update
-        else
-            pod install --repo-update
-        fi
     fi
+    if [ "$hasBundler" = "1" ]; then
+        bundle exec pod install --repo-update
+    else
+        pod install --repo-update
+    fi
+    swift package resolve
+    swift package update
     echo "Clean complete."
 }
 
